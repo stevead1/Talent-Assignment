@@ -1,0 +1,70 @@
+﻿@model IEnumerable<TalentAssignment.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customer Details</h2>
+
+
+<div id='customerroot'> </div>
+
+<p>
+    @Html.ActionLink("Add New Customer", "Create")
+</p>
+
+
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            Customer Name@*@Html.DisplayNameFor(model => model.Name)*@
+        </th>
+        <th>
+            Address@*@Html.DisplayNameFor(model => model.Address)*@
+        </th>
+        <th>
+            Action(Edit)
+        </th>
+        <th>
+            Action(Delete)
+        </th>
+
+    </tr>
+
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                @*@Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
+
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+@section Scripts{
+
+
+
+    <script src="~/Scripts/react/dist/Customer.bundle.js"></script>
+
+}
